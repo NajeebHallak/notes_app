@@ -11,6 +11,7 @@ class NptesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       routes: {NotesApp.id: (context) => const NotesApp()},
       theme: ThemeData(
         brightness: Brightness.dark,
