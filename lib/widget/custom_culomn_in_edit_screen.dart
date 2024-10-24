@@ -8,22 +8,24 @@ class CustomCulomnInEditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 45,
           ),
-          CustomTetFild(
-            heightFild: 20,
+          CustomTetFormFild(
+            onSaved: (value) {},
+            maxLines: 1,
             hintText: 'Title',
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          CustomTetFild(
-            heightFild: 65,
+          CustomTetFormFild(
+            onSaved: (value) {},
+            maxLines: 5,
             hintText: 'Content',
           ),
         ],

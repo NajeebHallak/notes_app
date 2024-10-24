@@ -2,22 +2,32 @@ import 'package:flutter/material.dart';
 
 import '../constans.dart';
 
-class CustomTetFild extends StatelessWidget {
-  const CustomTetFild({
+class CustomTetFormFild extends StatelessWidget {
+  const CustomTetFormFild({
     super.key,
-    required this.heightFild,
+    required this.maxLines,
     required this.hintText,
+    required this.onSaved,
   });
-  final double heightFild;
+  final void Function(String?)? onSaved;
+  final int maxLines;
   final String hintText;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'Fild is required ';
+        } else {
+          return null;
+        }
+      },
+      onSaved: onSaved,
       cursorColor: kPrimaryColor,
-      // maxLines: maxLines,
+      maxLines: maxLines,
       decoration: InputDecoration(
-        contentPadding:
-            EdgeInsets.only(top: heightFild, bottom: heightFild, left: 15),
+        // contentPadding:
+        //     EdgeInsets.only(top: heightFild, bottom: heightFild, left: 15),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         enabledBorder: OutlineInputBorderMithod(),
         focusedBorder: OutlineInputBorderMithod(kPrimaryColor),
