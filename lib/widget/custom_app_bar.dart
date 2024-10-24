@@ -4,14 +4,20 @@ import 'package:notes_app/widget/custum_circle_icon_search.dart';
 import '../constans.dart';
 
 class CustomAppBar extends AppBar {
-  CustomAppBar({super.key})
+  final IconData icon;
+
+  final String titl;
+  CustomAppBar({super.key, required this.icon, required this.titl})
       : super(
-          title: const Text(
-            'Notes',
+          automaticallyImplyLeading: false,
+          title: Text(
+            titl,
             style: kPeimayTextStyletitle,
           ),
-          actions: const [
-            CustumCircleIconSearch(),
+          actions: [
+            CustumCircleIconSearch(
+              icon: icon,
+            ),
           ],
         );
 }

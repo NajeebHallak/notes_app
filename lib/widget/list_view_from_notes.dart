@@ -10,11 +10,11 @@ class ListViewFromNotes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           const SizedBox(
-            height: 35,
+            height: 20,
           ),
           Expanded(
             child: ListView.builder(

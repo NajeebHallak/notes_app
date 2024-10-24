@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustumCircleIconSearch extends StatelessWidget {
-  const CustumCircleIconSearch({super.key});
+  const CustumCircleIconSearch({super.key, required this.icon});
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(right: 10),
+        margin: const EdgeInsets.only(right: 18),
         height: 45,
         width: 45,
         decoration: BoxDecoration(
@@ -15,10 +16,7 @@ class CustumCircleIconSearch extends StatelessWidget {
         ),
         child: IconButton(
           onPressed: () {},
-          icon: const Icon(
-            Icons.search,
-            size: 30,
-          ),
+          icon: Icon(icon),
         ));
   }
 }
