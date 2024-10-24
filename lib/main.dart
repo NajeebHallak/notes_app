@@ -12,11 +12,11 @@ class NptesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {NotesApp.id: (context) => const NotesApp()},
+      routes: {NotesAppView.id: (context) => const NotesAppView()},
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: NotesApp.id,
+      initialRoute: NotesAppView.id,
     );
   }
 }
