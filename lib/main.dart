@@ -9,15 +9,17 @@ import 'package:notes_app/views/edit_notes_view.dart';
 import 'package:notes_app/views/notes_app_view.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  await Hive.openBox(kPrimaryBox);
-  Bloc.observer = SimpoleBlocObserver();
   Hive.registerAdapter(NotesModelAdapter());
-  runApp(const NptesApp.NotesApp());
+  await Hive.openBox<NotesModel>(kPrimaryBox);
+  Bloc.observer = SimpoleBlocObserver();
+
+  runApp(const NptesApp());
 }
 
 class NptesApp extends StatelessWidget {
-  const NptesApp.NotesApp({super.key});
+  const NptesApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SimpoleBlocObserver implements BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
-    debugPrint('the Change is $change');
+    debugPrint('The Change is $change');
   }
 
   @override

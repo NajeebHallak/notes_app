@@ -5,9 +5,14 @@ import 'package:notes_app/widget/custom_form_fild.dart';
 
 import '../cubit/add_note_cubit/add_note_cubit_cubit.dart';
 
-class CustomContainerInButtonSheet extends StatelessWidget {
+class CustomContainerInButtonSheet extends StatefulWidget {
   const CustomContainerInButtonSheet({super.key});
 
+  @override
+  State<CustomContainerInButtonSheet> createState() => _CustomContainerInButtonSheetState();
+}
+
+class _CustomContainerInButtonSheetState extends State<CustomContainerInButtonSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(

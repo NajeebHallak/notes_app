@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
@@ -19,10 +16,10 @@ class CustomFormFild extends StatefulWidget {
 
 GlobalKey<FormState> formKey = GlobalKey();
 AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+NotesModel? notesModel;
+String? title, subTitle;
 
 class _CustomFormFildState extends State<CustomFormFild> {
-  NotesModel? notesModel;
-  String? title, subTitle;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -56,6 +53,7 @@ class _CustomFormFildState extends State<CustomFormFild> {
           AddNotesInButtonSheet(
             onTap: () {
               if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
                 notesModel = NotesModel(
                     title: title!,
                     subTitle: subTitle!,
@@ -63,7 +61,6 @@ class _CustomFormFildState extends State<CustomFormFild> {
                     date: DateTime.now().toString());
                 BlocProvider.of<AddNoteCubitCubit>(context)
                     .addNote(notesModel!);
-                formKey.currentState!.save();
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});

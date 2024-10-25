@@ -10,7 +10,7 @@ final class AddNoteCubitIsLoaded extends AddNoteCubitState {}
 final class AddNoteCubitIsfaliure extends AddNoteCubitState {
   String error;
 
-  AddNoteCubitIsfaliure( this.error);
+  AddNoteCubitIsfaliure(this.error);
 }
 
 final class AddNoteCubitIsSuccess extends AddNoteCubitState {}
