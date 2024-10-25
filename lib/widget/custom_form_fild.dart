@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/widget/button_add_notes_in_button_sheet.dart';
@@ -50,21 +51,26 @@ class _CustomFormFildState extends State<CustomFormFild> {
           const SizedBox(
             height: 100,
           ),
-          AddNotesInButtonSheet(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                notesModel = NotesModel(
-                    title: title!,
-                    subTitle: subTitle!,
-                    color: Colors.blue.value,
-                    date: DateTime.now().toString());
-                BlocProvider.of<AddNoteCubitCubit>(context)
-                    .addNote(notesModel!);
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
+          BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
+            builder: (context, state) {
+              return ButtonAddNotes(
+                isLoading: state is AddNoteCubitIsLoaded ? true : false,
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    notesModel = NotesModel(
+                        title: title!,
+                        subTitle: subTitle!,
+                        color: Colors.blue.value,
+                        date: DateTime.now().toString());
+                    BlocProvider.of<AddNoteCubitCubit>(context)
+                        .addNote(notesModel!);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              );
             },
           ),
           const SizedBox(
