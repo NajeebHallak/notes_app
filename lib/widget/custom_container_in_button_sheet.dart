@@ -1,80 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widget/button_add_notes_in_button_sheet.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:notes_app/widget/custom_form_fild.dart';
 
-import 'custom_text_fild.dart';
+import '../cubit/add_note_cubit/add_note_cubit_cubit.dart';
 
 class CustomContainerInButtonSheet extends StatelessWidget {
   const CustomContainerInButtonSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(12),
-        child: CustomFormFild(),
-      ),
-    );
-  }
-}
-
-class CustomFormFild extends StatefulWidget {
-  const CustomFormFild({
-    super.key,
-  });
-
-  @override
-  State<CustomFormFild> createState() => _CustomFormFildState();
-}
-
-GlobalKey<FormState> formKey = GlobalKey();
-AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
-class _CustomFormFildState extends State<CustomFormFild> {
-  String? title, subTitle;
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 32,
-          ),
-          CustomTetFormFild(
-            onSaved: (value) {
-              title = value;
-            },
-            maxLines: 1,
-            hintText: 'Title',
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          CustomTetFormFild(
-            onSaved: (value) {
-              subTitle = value;
-            },
-            maxLines: 5,
-            hintText: 'Content',
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          AddNotesInButtonSheet(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
+        listener: (context, state) {
+          if (state is AddNoteCubitIsfaliure) {
+            print('faliur is ${state.error} ');
+          } else {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is AddNoteCubitIsLoaded ? true : false,
+            child: const SingleChildScrollView(
+              child: CustomFormFild(),
+            ),
+          );
+        },
       ),
     );
   }
