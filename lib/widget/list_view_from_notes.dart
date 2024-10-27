@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubit/LoadeNoteCubit/loade_the_note_cubit.dart';
+import 'package:notes_app/widget/bloc_builder_for_loade_the_note.dart';
 
-import 'custom_container_notes.dart';
-
-class ListViewFromNotes extends StatelessWidget {
+class ListViewFromNotes extends StatefulWidget {
   const ListViewFromNotes({
     super.key,
   });
 
   @override
+  State<ListViewFromNotes> createState() => _ListViewFromNotesState();
+}
+
+class _ListViewFromNotesState extends State<ListViewFromNotes> {
+  @override
+  void initState() {
+    BlocProvider.of<LoadeTheNoteCubit>(context).LoadeTheNote();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
-          const SizedBox(
+          SizedBox(
             height: 20,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) => const CustomContainerNotes(),
-            ),
-          ),
+          BlocBuilderForLoadeTheNote(),
         ],
       ),
     );

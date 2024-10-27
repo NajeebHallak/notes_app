@@ -9,7 +9,7 @@ import 'package:notes_app/views/edit_notes_view.dart';
 import 'package:notes_app/views/notes_app_view.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(NotesModelAdapter());
   await Hive.openBox<NotesModel>(kPrimaryBox);

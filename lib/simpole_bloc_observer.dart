@@ -9,12 +9,12 @@ class SimpoleBlocObserver implements BlocObserver {
 
   @override
   void onClose(BlocBase bloc) {
-    // TODO: implement onClose
+    debugPrint('The Bloc is close is $bloc');
   }
 
   @override
   void onCreate(BlocBase bloc) {
-    // TODO: implement onCreate
+    debugPrint('The Bloc is creat is $bloc');
   }
 
   @override

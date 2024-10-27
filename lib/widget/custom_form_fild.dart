@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
@@ -21,6 +24,28 @@ NotesModel? notesModel;
 String? title, subTitle;
 
 class _CustomFormFildState extends State<CustomFormFild> {
+  final List<Color> colors = const [
+    Color(0xFFCD93D7),
+    Color(0xFF7EDEEC),
+    Color(0xFFFECD7D),
+    Color(0xFFA98853),
+    Color(0xFFAA9D95),
+    Color(0xFFE6ED98),
+  ];
+
+  Color? randomColor;
+
+  @override
+  void initState() {
+    super.initState();
+    randomColor = getRandomColor();
+  }
+
+  Color getRandomColor() {
+    final random = Random();
+    return colors[random.nextInt(colors.length)];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -57,12 +82,14 @@ class _CustomFormFildState extends State<CustomFormFild> {
                 isLoading: state is AddNoteCubitIsLoaded ? true : false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
+                    var formDate = DateFormat.yMEd().format(DateTime.now());
                     formKey.currentState!.save();
                     notesModel = NotesModel(
-                        title: title!,
-                        subTitle: subTitle!,
-                        color: Colors.blue.value,
-                        date: DateTime.now().toString());
+                      title: title!,
+                      subTitle: subTitle!,
+                      color: randomColor!.value,
+                      date: formDate,
+                    );
                     BlocProvider.of<AddNoteCubitCubit>(context)
                         .addNote(notesModel!);
                   } else {
@@ -81,3 +108,4 @@ class _CustomFormFildState extends State<CustomFormFild> {
     );
   }
 }
+///'${DateTime.now().month.toString()} ${DateTime.now().day.toString()},${DateTime.now().year.toString()}'

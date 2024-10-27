@@ -14,6 +14,7 @@ class CustomFlotingActionButton extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       onPressed: () {
         showModalBottomSheet(
+          isDismissible: true,
           isScrollControlled: true,
           context: context,
           builder: (context) => const CustomContainerInButtonSheet(),

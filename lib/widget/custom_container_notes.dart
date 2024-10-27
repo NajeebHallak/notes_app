@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/views/edit_notes_view.dart';
 
 class CustomContainerNotes extends StatelessWidget {
-  const CustomContainerNotes({super.key});
+  const CustomContainerNotes({super.key, required this.notesModel});
+  final NotesModel notesModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,43 +19,49 @@ class CustomContainerNotes extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: const Color(0xFFFFCD79),
+          color: Color(notesModel.color),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
               contentPadding: EdgeInsets.zero,
-              title: const Text(
-                'Flutter Tips',
-                style: TextStyle(
+              title: Text(
+                notesModel.title,
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  'Builde your career with tharwat samy',
+                  notesModel.subTitle,
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.black.withOpacity(0.4),
                   ),
                 ),
               ),
-              trailing: const Padding(
-                padding: EdgeInsets.only(bottom: 30),
-                child: Icon(
-                  FontAwesomeIcons.trash,
-                  color: Colors.black,
-                  size: 30,
+              trailing: Padding(
+                padding: const EdgeInsets.only(bottom: 30),
+                child: IconButton(
+                  onPressed: () {
+                    notesModel.delete();
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.trash,
+                    color: Colors.black,
+                    size: 30,
+                  ),
                 ),
               ),
             ),
             Text(
-              'may 10,2024',
+              notesModel.date,
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 15,
                 color: Colors.black.withOpacity(0.4),
               ),
             ),

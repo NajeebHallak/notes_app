@@ -11,10 +11,14 @@ class CustomContainerInButtonSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
       listener: (context, state) {
-        if (state is AddNoteCubitIsfaliure) {
-          print('faliur is ${state.error} ');
-        } else {
+        if (state is AddNoteCubitIsSuccess) {
+          print('success ');
           Navigator.pop(context);
+        } else {
+          state is AddNoteCubitIsfaliure
+              ? print('The Failur is ${state.error}')
+              : const Text('#######');
+          ;
         }
       },
       builder: (context, state) {
