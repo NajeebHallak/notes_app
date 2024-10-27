@@ -3,11 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/widget/button_add_notes_in_button_sheet.dart';
 import 'package:notes_app/widget/custom_text_fild.dart';
+import 'package:notes_app/widget/list_view_color.dart';
 
 class CustomFormFild extends StatefulWidget {
   const CustomFormFild({
@@ -74,7 +74,11 @@ class _CustomFormFildState extends State<CustomFormFild> {
             hintText: 'Content',
           ),
           const SizedBox(
-            height: 100,
+            height: 20,
+          ),
+          const ListViewColor(),
+          const SizedBox(
+            height: 30,
           ),
           BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
             builder: (context, state) {
@@ -87,7 +91,7 @@ class _CustomFormFildState extends State<CustomFormFild> {
                     notesModel = NotesModel(
                       title: title!,
                       subTitle: subTitle!,
-                      color: randomColor!.value,
+                      color: BlocProvider.of<AddNoteCubitCubit>(context).colors!.value ,
                       date: formDate,
                     );
                     BlocProvider.of<AddNoteCubitCubit>(context)
@@ -108,4 +112,4 @@ class _CustomFormFildState extends State<CustomFormFild> {
     );
   }
 }
-///'${DateTime.now().month.toString()} ${DateTime.now().day.toString()},${DateTime.now().year.toString()}'
+//'${DateTime.now().month.toString()} ${DateTime.now().day.toString()},${DateTime.now().year.toString()}'

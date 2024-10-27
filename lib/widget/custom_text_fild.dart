@@ -7,11 +7,13 @@ class CustomTetFormFild extends StatelessWidget {
     super.key,
     required this.maxLines,
     required this.hintText,
-    required this.onSaved,
+     this.onChanged,
+    this.onSaved,
   });
   final void Function(String?)? onSaved;
   final int maxLines;
   final String hintText;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -22,6 +24,7 @@ class CustomTetFormFild extends StatelessWidget {
           return null;
         }
       },
+      onChanged: onChanged,
       onSaved: onSaved,
       cursorColor: kPrimaryColor,
       maxLines: maxLines,

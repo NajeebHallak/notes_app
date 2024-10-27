@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustumCircleIconSearch extends StatelessWidget {
-  const CustumCircleIconSearch({super.key, required this.icon});
+  const CustumCircleIconSearch({super.key, required this.icon, this.onPressed});
+  final void Function()? onPressed;
   final IconData icon;
 
   @override
@@ -14,9 +15,14 @@ class CustumCircleIconSearch extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
           color: const Color(0xFF3B3B3B),
         ),
-        child: IconButton(
-          onPressed: () {},
-          icon: Icon(icon),
+        child: Center(
+          child: IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              icon,
+              size: 30,
+            ),
+          ),
         ));
   }
 }

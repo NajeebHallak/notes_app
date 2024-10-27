@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/views/edit_notes_view.dart';
-
 import '../cubit/LoadeNoteCubit/loade_the_note_cubit.dart';
 
 class CustomContainerNotes extends StatelessWidget {
@@ -14,7 +13,7 @@ class CustomContainerNotes extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditNotesView.id);
+        Navigator.pushNamed(context, EditNotesView.id, arguments: notesModel);
       },
       child: Container(
         margin: const EdgeInsets.only(top: 10),

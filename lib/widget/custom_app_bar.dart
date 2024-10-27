@@ -5,10 +5,14 @@ import '../constans.dart';
 
 class CustomAppBar extends AppBar {
   final IconData icon;
-
   final String titl;
-  CustomAppBar({super.key, required this.icon, required this.titl})
-      : super(
+  final void Function()? onPressed;
+  CustomAppBar({
+    super.key,
+    this.onPressed,
+    required this.icon,
+    required this.titl,
+  }) : super(
           automaticallyImplyLeading: false,
           title: Text(
             titl,
@@ -16,6 +20,7 @@ class CustomAppBar extends AppBar {
           ),
           actions: [
             CustumCircleIconSearch(
+              onPressed: onPressed,
               icon: icon,
             ),
           ],
