@@ -24,7 +24,7 @@ class SimpoleBlocObserver implements BlocObserver {
 
   @override
   void onEvent(Bloc bloc, Object? event) {
-    // TODO: implement onEvent
+  
   }
 
   @override

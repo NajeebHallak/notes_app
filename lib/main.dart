@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constans.dart';
+import 'package:notes_app/cubit/LoadeNoteCubit/loade_the_note_cubit.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/simpole_bloc_observer.dart';
@@ -23,12 +24,8 @@ class NptesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<AddNoteCubitCubit>(
-          create: (context) => AddNoteCubitCubit(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => LoadeTheNoteCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {

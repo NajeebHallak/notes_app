@@ -14,5 +14,6 @@ class LoadeTheNoteCubit extends Cubit<LoadeTheNoteState> {
   LoadeTheNote() {
     var myBox = Hive.box<NotesModel>(kPrimaryBox);
     notesModel = myBox.values.toList();
+    emit(LoadeTheNoteSuccess());
   }
 }

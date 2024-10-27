@@ -4,3 +4,4 @@ part of 'loade_the_note_cubit.dart';
 sealed class LoadeTheNoteState {}
 
 final class LoadeTheNoteInitial extends LoadeTheNoteState {}
+final class LoadeTheNoteSuccess extends LoadeTheNoteState {}
