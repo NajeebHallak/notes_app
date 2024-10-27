@@ -14,10 +14,10 @@ class CircleColor extends StatelessWidget {
         ? Padding(
             padding: const EdgeInsets.only(right: 15),
             child: CircleAvatar(
-              radius: 45,
+              radius: 35,
               backgroundColor: Colors.white,
               child: CircleAvatar(
-                radius: 40,
+                radius: 30,
                 backgroundColor: colors,
               ),
             ),
@@ -25,7 +25,7 @@ class CircleColor extends StatelessWidget {
         : Padding(
             padding: const EdgeInsets.only(right: 15),
             child: CircleAvatar(
-              radius: 45,
+              radius: 35,
               backgroundColor: colors,
             ),
           );

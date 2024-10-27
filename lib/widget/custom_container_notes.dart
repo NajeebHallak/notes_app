@@ -32,7 +32,7 @@ class CustomContainerNotes extends StatelessWidget {
                 notesModel.title,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 30,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -41,7 +41,7 @@ class CustomContainerNotes extends StatelessWidget {
                 child: Text(
                   notesModel.subTitle,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.black.withOpacity(0.4),
                   ),
                 ),
@@ -56,7 +56,7 @@ class CustomContainerNotes extends StatelessWidget {
                   icon: const Icon(
                     FontAwesomeIcons.trash,
                     color: Colors.black,
-                    size: 30,
+                    size: 25,
                   ),
                 ),
               ),

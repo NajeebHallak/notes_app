@@ -16,7 +16,7 @@ class ButtonAddNotes extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 55,
+        height: 50,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16), color: kPrimaryColor),

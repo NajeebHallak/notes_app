@@ -10,7 +10,7 @@ part 'loade_the_note_state.dart';
 
 class LoadeTheNoteCubit extends Cubit<LoadeTheNoteState> {
   LoadeTheNoteCubit() : super(LoadeTheNoteInitial());
-  Color? colors;
+
   List<NotesModel>? notesModel;
   LoadeTheNote() {
     var myBox = Hive.box<NotesModel>(kPrimaryBox);

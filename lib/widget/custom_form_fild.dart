@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -24,27 +22,27 @@ NotesModel? notesModel;
 String? title, subTitle;
 
 class _CustomFormFildState extends State<CustomFormFild> {
-  final List<Color> colors = const [
-    Color(0xFFCD93D7),
-    Color(0xFF7EDEEC),
-    Color(0xFFFECD7D),
-    Color(0xFFA98853),
-    Color(0xFFAA9D95),
-    Color(0xFFE6ED98),
-  ];
+  // final List<Color> colors = const [
+  //   Color(0xFFCD93D7),
+  //   Color(0xFF7EDEEC),
+  //   Color(0xFFFECD7D),
+  //   Color(0xFFA98853),
+  //   Color(0xFFAA9D95),
+  //   Color(0xFFE6ED98),
+  // ];
 
   Color? randomColor;
 
   @override
-  void initState() {
-    super.initState();
-    randomColor = getRandomColor();
-  }
+  // void initState() {
+  //   super.initState();
+  //   randomColor = getRandomColor();
+  // }
 
-  Color getRandomColor() {
-    final random = Random();
-    return colors[random.nextInt(colors.length)];
-  }
+  // Color getRandomColor() {
+  //   final random = Random();
+  //   return colors[random.nextInt(colors.length)];
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +52,7 @@ class _CustomFormFildState extends State<CustomFormFild> {
       child: Column(
         children: [
           const SizedBox(
-            height: 32,
+            height: 21,
           ),
           CustomTetFormFild(
             onSaved: (value) {
@@ -70,15 +68,15 @@ class _CustomFormFildState extends State<CustomFormFild> {
             onSaved: (value) {
               subTitle = value;
             },
-            maxLines: 5,
+            maxLines: 4,
             hintText: 'Content',
           ),
           const SizedBox(
-            height: 20,
+            height: 15,
           ),
           const ListViewColorAdd(),
           const SizedBox(
-            height: 30,
+            height: 15,
           ),
           BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
             builder: (context, state) {
@@ -92,7 +90,7 @@ class _CustomFormFildState extends State<CustomFormFild> {
                       title: title!,
                       subTitle: subTitle!,
                       color: BlocProvider.of<AddNoteCubitCubit>(context)
-                          .colors!
+                          .colors
                           .value,
                       date: formDate,
                     );
@@ -107,7 +105,7 @@ class _CustomFormFildState extends State<CustomFormFild> {
             },
           ),
           const SizedBox(
-            height: 8,
+            height: 10,
           ),
         ],
       ),

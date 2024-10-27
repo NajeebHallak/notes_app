@@ -54,13 +54,15 @@ class _EditNotesViewState extends State<EditNotesView> {
               onChanged: (value) {
                 newSubTitle = value;
               },
-              maxLines: 5,
+              maxLines: 4,
               hintText: notesModel.subTitle,
             ),
             const SizedBox(
-              height: 30,
+              height: 15,
             ),
-            const ListViewColorEdit(),
+            ListViewColorEdit(
+              newColors: notesModel.color,
+            ),
           ],
         ),
       ),
@@ -70,9 +72,6 @@ class _EditNotesViewState extends State<EditNotesView> {
   void confirmTheEditing(NotesModel notesModel, BuildContext context) {
     notesModel.title = newTitle ?? notesModel.title;
     notesModel.subTitle = newSubTitle ?? notesModel.subTitle;
-    notesModel.color =
-        BlocProvider.of<LoadeTheNoteCubit>(context).colors?.value ??
-            notesModel.color;
     BlocProvider.of<LoadeTheNoteCubit>(context).LoadeTheNote();
     Navigator.pop(context);
   }
