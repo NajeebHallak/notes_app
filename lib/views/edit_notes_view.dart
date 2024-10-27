@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubit/LoadeNoteCubit/loade_the_note_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/widget/custom_app_bar.dart';
+import 'package:notes_app/widget/list_view_color_add.dart';
 
 import '../widget/custom_text_fild.dart';
+import '../widget/list_view_color_edit.dart';
 
 class EditNotesView extends StatefulWidget {
   const EditNotesView({
@@ -26,10 +28,7 @@ class _EditNotesViewState extends State<EditNotesView> {
     return Scaffold(
       appBar: CustomAppBar(
         onPressed: () {
-          notesModel.title = newTitle ?? notesModel.title;
-          notesModel.subTitle = newSubTitle ?? notesModel.subTitle;
-          BlocProvider.of<LoadeTheNoteCubit>(context).LoadeTheNote();
-          Navigator.pop(context);
+          confirmTheEditing(notesModel, context);
         },
         titl: ' Edit Notes',
         icon: Icons.check,
@@ -58,9 +57,23 @@ class _EditNotesViewState extends State<EditNotesView> {
               maxLines: 5,
               hintText: notesModel.subTitle,
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            const ListViewColorEdit(),
           ],
         ),
       ),
     );
+  }
+
+  void confirmTheEditing(NotesModel notesModel, BuildContext context) {
+    notesModel.title = newTitle ?? notesModel.title;
+    notesModel.subTitle = newSubTitle ?? notesModel.subTitle;
+    notesModel.color =
+        BlocProvider.of<LoadeTheNoteCubit>(context).colors?.value ??
+            notesModel.color;
+    BlocProvider.of<LoadeTheNoteCubit>(context).LoadeTheNote();
+    Navigator.pop(context);
   }
 }

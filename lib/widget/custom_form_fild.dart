@@ -7,7 +7,7 @@ import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/widget/button_add_notes_in_button_sheet.dart';
 import 'package:notes_app/widget/custom_text_fild.dart';
-import 'package:notes_app/widget/list_view_color.dart';
+import 'package:notes_app/widget/list_view_color_add.dart';
 
 class CustomFormFild extends StatefulWidget {
   const CustomFormFild({
@@ -76,7 +76,7 @@ class _CustomFormFildState extends State<CustomFormFild> {
           const SizedBox(
             height: 20,
           ),
-          const ListViewColor(),
+          const ListViewColorAdd(),
           const SizedBox(
             height: 30,
           ),
@@ -91,7 +91,9 @@ class _CustomFormFildState extends State<CustomFormFild> {
                     notesModel = NotesModel(
                       title: title!,
                       subTitle: subTitle!,
-                      color: BlocProvider.of<AddNoteCubitCubit>(context).colors!.value ,
+                      color: BlocProvider.of<AddNoteCubitCubit>(context)
+                          .colors!
+                          .value,
                       date: formDate,
                     );
                     BlocProvider.of<AddNoteCubitCubit>(context)

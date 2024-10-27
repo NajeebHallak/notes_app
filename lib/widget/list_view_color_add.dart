@@ -5,14 +5,14 @@ import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
 
 import 'circle_color.dart';
 
-class ListViewColor extends StatefulWidget {
-  const ListViewColor({super.key});
+class ListViewColorAdd extends StatefulWidget {
+  const ListViewColorAdd({super.key});
 
   @override
-  State<ListViewColor> createState() => _ListViewColorState();
+  State<ListViewColorAdd> createState() => _ListViewColorAddState();
 }
 
-class _ListViewColorState extends State<ListViewColor> {
+class _ListViewColorAddState extends State<ListViewColorAdd> {
   int theChoose = 0;
 
   List<Color> colors = const [

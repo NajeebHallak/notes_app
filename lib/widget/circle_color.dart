@@ -12,7 +12,7 @@ class CircleColor extends StatelessWidget {
   Widget build(BuildContext context) {
     return isColor
         ? Padding(
-            padding: const EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: CircleAvatar(
               radius: 45,
               backgroundColor: Colors.white,
@@ -23,7 +23,7 @@ class CircleColor extends StatelessWidget {
             ),
           )
         : Padding(
-            padding: const EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: CircleAvatar(
               radius: 45,
               backgroundColor: colors,
