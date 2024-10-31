@@ -21,6 +21,7 @@ class CustumCircleIconSearch extends StatelessWidget {
             icon: Icon(
               icon,
               size: 30,
+              color: Colors.white,
             ),
           ),
         ));

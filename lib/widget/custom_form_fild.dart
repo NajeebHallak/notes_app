@@ -55,6 +55,15 @@ class _CustomFormFildState extends State<CustomFormFild> {
             height: 21,
           ),
           CustomTetFormFild(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return 'Fild is required ';
+              } else if (value!.length > 15) {
+                return 'The titile text is long ';
+              } else {
+                return null;
+              }
+            },
             onSaved: (value) {
               title = value;
             },
@@ -65,6 +74,13 @@ class _CustomFormFildState extends State<CustomFormFild> {
             height: 15,
           ),
           CustomTetFormFild(
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return 'Fild is required ';
+              } else {
+                return null;
+              }
+            },
             onSaved: (value) {
               subTitle = value;
             },

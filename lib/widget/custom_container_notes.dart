@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/views/edit_notes_view.dart';
 import '../cubit/LoadeNoteCubit/loade_the_note_cubit.dart';
+import '../views/note_view.dart';
 
 class CustomContainerNotes extends StatelessWidget {
   const CustomContainerNotes({super.key, required this.notesModel});
@@ -13,7 +15,11 @@ class CustomContainerNotes extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditNotesView.id, arguments: notesModel);
+        Navigator.pushNamed(
+          context,
+          NoteView.id,
+          arguments: notesModel,
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(top: 10),
@@ -30,6 +36,8 @@ class CustomContainerNotes extends StatelessWidget {
               contentPadding: EdgeInsets.zero,
               title: Text(
                 notesModel.title,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 25,
@@ -40,6 +48,8 @@ class CustomContainerNotes extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
                   notesModel.subTitle,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black.withOpacity(0.4),
@@ -47,7 +57,7 @@ class CustomContainerNotes extends StatelessWidget {
                 ),
               ),
               trailing: Padding(
-                padding: const EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 0),
                 child: IconButton(
                   onPressed: () {
                     notesModel.delete();

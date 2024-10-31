@@ -7,9 +7,11 @@ class CustomTetFormFild extends StatelessWidget {
     super.key,
     required this.maxLines,
     required this.hintText,
-     this.onChanged,
+    this.onChanged,
     this.onSaved,
+    this.validator,
   });
+  final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
   final int maxLines;
   final String hintText;
@@ -17,13 +19,7 @@ class CustomTetFormFild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (value) {
-        if (value?.isEmpty ?? true) {
-          return 'Fild is required ';
-        } else {
-          return null;
-        }
-      },
+      validator: validator,
       onChanged: onChanged,
       onSaved: onSaved,
       cursorColor: kPrimaryColor,

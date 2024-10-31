@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constans.dart';
 import 'package:notes_app/cubit/LoadeNoteCubit/loade_the_note_cubit.dart';
-import 'package:notes_app/cubit/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/model/notes_model.dart';
 import 'package:notes_app/simpole_bloc_observer.dart';
 import 'package:notes_app/views/edit_notes_view.dart';
+import 'package:notes_app/views/note_view.dart';
 import 'package:notes_app/views/notes_app_view.dart';
 
 void main() async {
@@ -31,6 +31,7 @@ class NptesApp extends StatelessWidget {
         routes: {
           NotesAppView.id: (context) => const NotesAppView(),
           EditNotesView.id: (context) => const EditNotesView(),
+          NoteView.id: (context) => NoteView(),
         },
         theme: ThemeData(
           brightness: Brightness.dark,
